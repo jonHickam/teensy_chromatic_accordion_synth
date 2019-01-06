@@ -1,0 +1,3 @@
+This is a chromatic button accordion build using cherry MX-style keyboard buttons and a teensy arduino board. 
+
+documentation still to come...

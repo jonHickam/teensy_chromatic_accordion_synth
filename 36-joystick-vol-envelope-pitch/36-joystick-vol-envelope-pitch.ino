@@ -29,20 +29,6 @@ AudioConnection          patchCord9(amp1, 0, dacs1, 0);
 
 int current_waveform = WAVEFORM_TRIANGLE;
 
-// key mapping for C-system accordion
-const int buttonNote[10][7] = 
-{
-{40,34,28,22,16,10,4},
-{37,31,25,19,13,7,0},
-{42,36,30,24,18,12,6},
-{39,33,27,21,15,9,0},
-{41,35,29,23,17,11,5},
-{38,32,26,20,14,8,0},
-{43,37,31,25,19,13,7},
-{40,34,28,22,16,10,0},
-{42,36,30,24,18,12,6},
-{39,33,27,21,15,9,0}
-};
 
 const float Frequency[128]=
   {8.18,8.66,9.18,9.72,10.3,10.91,11.56,12.25,12.98,13.75,14.57,15.43,16.35,
@@ -357,11 +343,6 @@ void checker(int val, int rInt, int cInt){
       buttonState[rInt][cInt] = val;
 
   }
-}
-
-int midiNumber(int rInt, int cInt) {
-  int val = buttonNote[rInt][cInt] + 12 * octive;
-  return val;
 }
 
 void makeNoise (int midiVal)

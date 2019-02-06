@@ -1,6 +1,8 @@
 
 // key mapping for C-system accordion
 
+
+
 const int buttonNote[10][7] = 
 {
 {43,37,31,25,19,13,7},

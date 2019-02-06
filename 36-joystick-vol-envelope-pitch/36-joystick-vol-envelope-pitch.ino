@@ -77,7 +77,7 @@ float frequencyMod =1;
 float initalAmplitude = .5;
 int nextWaveform;
 int pitchGlobal = 0;
-
+int ByteDebug = 0;
 elapsedMillis JoystickReadMillis = 0;
 //extern const int16_t myWaveform[256];  // defined in myWaveform.ino
 //waveform1.arbitraryWaveform(myWaveform, 172.0);
@@ -109,13 +109,16 @@ void setup() {
   yAxis = yAxisStart;
   
     //Initialize serial and wait for port to open:
+  if (ByteDebug == 1){
   Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    while (!Serial) {
+      ; // wait for serial port to connect. Needed for native USB port only
+    }
+   
   }
-
-  Serial.print("Starting x");
-  Serial.println(xAxisStart);
+ 
+  FD("Starting x:");
+  FunDebug(xAxisStart);
   AudioMemory(20);
 
   for(int x = 0; x < 4; x++) {
@@ -128,31 +131,31 @@ void setup() {
   nextWaveform = 0;
       
   rSize = sizeof(rPins)/sizeof(int);
-  Serial.print(rSize);
-  Serial.print(" initializing rows ");
+  FD(rSize);
+  FD(" initializing rows ");
     for(int x = 0; x < rSize; x ++) {
    
     pinMode(rPins[x], OUTPUT);
     digitalWrite(rPins[x], LOW);
-    Serial.print(rPins[x]);
-    Serial.print(" ");
+    FD(rPins[x]);
+    FD(" ");
   
     for(int y=0; y < cSize; y ++) {
       buttonState[x][y] = 0;
     }
   
   }
-  Serial.println(" ");
+  FunDebug(" ");
   cSize = sizeof(cPins)/sizeof(int);
-  Serial.print(cSize);
-  Serial.print(" initializing columns ");
+  FD(cSize);
+  FD(" initializing columns ");
   for(int x = 0; x < cSize; x ++) {
  
     pinMode(cPins[x], INPUT_PULLDOWN);
-    Serial.print(cPins[x]);
-    Serial.print(" ");
+    FD(cPins[x]);
+    FD(" ");
   }
-  Serial.println(" ");
+  FunDebug(" ");
 }
 
 
@@ -175,16 +178,16 @@ void loop() {
   // change octaves 
   if (OctiveUpVal == 1 && LastOctiveUpVal== 0 && octive < 6) {
     octive++;
-    Serial.println("Octive Up");
+    FunDebug("Octive Up");
   }
   if (OctiveDownVal == 1  && LastOctiveDownVal == 0 && octive > 0) {
     octive--;
-    Serial.println("Octive Down");
+    FunDebug("Octive Down");
   }
 
   // change wave types
   if (ButtonA == 1  && LastButtonA == 0 ) {
-    Serial.println("Button A");
+    FunDebug("Button A");
         switch (current_waveform) {
       case WAVEFORM_SINE:
         current_waveform = WAVEFORM_SAWTOOTH;

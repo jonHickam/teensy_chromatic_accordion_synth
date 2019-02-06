@@ -1,8 +1,52 @@
+void readButtons() {
+
+  //First send them current
+  digitalWrite(controlButtonPin,HIGH);
+  delay(5);
+  // then read the values
+  int OctiveUpVal = digitalRead(octaveUpPin);
+  int OctiveDownVal = digitalRead(octaveDownPin);
+  int ButtonA = digitalRead(buttonAPin);
+  int ButtonB = digitalRead(buttonBPin);
+
+  // change octaves 
+  if (OctiveUpVal == 1 && LastOctiveUpVal== 0 && octive < 6) {
+    octive++;
+    FunDebug("Octive Up");
+  }
+  if (OctiveDownVal == 1  && LastOctiveDownVal == 0 && octive > 0) {
+    octive--;
+    FunDebug("Octive Down");
+  }
+
+  // change wave types
+  if (ButtonA == 1  && LastButtonA == 0 ) {
+    FunDebug("Button A - change waveform");
+    changeWaveform();
+  }
+
+  // change pitch bend from single note to global
+  if (ButtonB == 1  && LastButtonB == 0  ) {
+    if ( pitchGlobal == 1) {
+      pitchGlobal = 0;
+    }
+    else if ( pitchGlobal == 0) {
+      pitchGlobal = 1;
+    }    
+  } // ButtonB pressed
+  
+  digitalWrite(controlButtonPin,LOW);  // turn off power to control pins
+  LastOctiveUpVal = OctiveUpVal;
+  LastOctiveDownVal = OctiveDownVal; 
+  LastButtonA = ButtonA;
+  LastButtonB = ButtonB;
+}
+
+
+
 void readJoystick() {
   
 
-    if (JoystickReadMillis >= 50) {
-    JoystickReadMillis = 0;
       
     float latestRead = analogRead(JoyXPin);
     if (abs(latestRead - xAxis) > 10){
@@ -45,6 +89,4 @@ void readJoystick() {
       yAxis = latestRead;
     }  //yAxis read
     
-   } // msec timer   
-  
 } // readJoystick

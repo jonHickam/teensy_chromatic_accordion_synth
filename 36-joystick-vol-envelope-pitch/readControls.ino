@@ -12,16 +12,16 @@ void readButtons() {
   // change octaves 
   if (OctaveUpVal == 1 && LastOctaveUpVal== 0 && octave < 6) {
     octave++;
-    FunDebug("Octave Up");
+    Debugln("Octave Up");
   }
   if (OctaveDownVal == 1  && LastOctaveDownVal == 0 && octave > 0) {
     octave--;
-    FunDebug("Octave Down");
+    Debugln("Octave Down");
   }
 
   // change wave types
   if (ButtonA == 1  && LastButtonA == 0 ) {
-    FunDebug("Button A - change waveform");
+    Debugln("Button A - change waveform");
     changeWaveform();
   }
 

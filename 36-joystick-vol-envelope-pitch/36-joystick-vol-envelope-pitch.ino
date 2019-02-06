@@ -93,8 +93,8 @@ void setup() {
    
   }
  
-  FD("Starting x:");
-  FunDebug(xAxisStart);
+  Debug("Starting x:");
+  Debugln(xAxisStart);
   AudioMemory(20);
 
 

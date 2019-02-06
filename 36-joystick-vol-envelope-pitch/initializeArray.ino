@@ -2,30 +2,30 @@ void initializeArray() {
 
     
   rSize = sizeof(rPins)/sizeof(int);
-  FD(rSize);
-  FD(" initializing rows ");
+  Debug(rSize);
+  Debug(" initializing rows ");
     for(int x = 0; x < rSize; x ++) {
    
     pinMode(rPins[x], OUTPUT);
     digitalWrite(rPins[x], LOW);
-    FD(rPins[x]);
-    FD(" ");
+    Debug(rPins[x]);
+    Debug(" ");
   
     for(int y=0; y < cSize; y ++) {
       buttonState[x][y] = 0;
     }
   
   }
-  FunDebug(" ");
+  Debugln(" ");
   cSize = sizeof(cPins)/sizeof(int);
-  FD(cSize);
-  FD(" initializing columns ");
+  Debug(cSize);
+  Debug(" initializing columns ");
   for(int x = 0; x < cSize; x ++) {
  
     pinMode(cPins[x], INPUT_PULLDOWN);
-    FD(cPins[x]);
-    FD(" ");
+    Debug(cPins[x]);
+    Debug(" ");
   }
-  FunDebug(" ");
+  Debugln(" ");
 
 }

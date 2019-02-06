@@ -1,10 +1,10 @@
 
-  void FunDebug (String msg) {
+  void Debugln (String msg) {
   if (ByteDebug == 1){
     Serial.println(msg);
    }
  }
- void FD (String msg) {
+ void Debug (String msg) {
   if (ByteDebug == 1){
     Serial.print(msg);
    }

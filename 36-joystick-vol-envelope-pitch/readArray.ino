@@ -23,6 +23,9 @@ void buttonChecker(int val, int rInt, int cInt){
       int note = midiNumber(rInt,cInt);
       usbMIDI.sendNoteOn(note, 99, midiChannel);
       makeNoise(note);
+      Debug("MIDI value: ");
+      Debugln(note);
+  
       buttonState[rInt][cInt] = val;
       
   }

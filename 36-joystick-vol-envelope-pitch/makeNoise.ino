@@ -15,8 +15,8 @@ const float Frequency[128]=
   };
 
 
-void makeNoise (int midiVal)
- {
+void makeNoise (int midiVal) {
+
      
      if (nextWaveform == 0)
         {

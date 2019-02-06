@@ -2,16 +2,13 @@
 #include <Audio.h>
 #include <Wire.h>
 
-
 const int midiChannel = 1;
 int current_waveform = WAVEFORM_TRIANGLE;
 int nextWaveform;
 
-int ByteDebug = 0;
-
+int ByteDebug = 1;
 
 //int waveState[3];
-
 
 void setup() {
   // put your setup code here, to run once:
@@ -33,7 +30,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
 
   // read the control buttons.  
   readButtons();
@@ -44,5 +40,3 @@ void loop() {
   // read the array
   readArray();
 }
-
-     

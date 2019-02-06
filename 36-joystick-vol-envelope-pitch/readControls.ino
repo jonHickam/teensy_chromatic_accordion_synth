@@ -50,11 +50,14 @@ void readJoystick() {
 
       
     float latestRead = analogRead(JoyXPin);
+    
     if (abs(latestRead - xAxis) > 10){
       frequencyMod = map(latestRead,1,1024,1056,944);
+      int midiMod = map(latestRead,1,1024,8000,0);
+      
       xAxis = latestRead;
    //   usbMIDI.sendControlChange(xAxisController, xAxisPin, channel);
-
+     usbMIDI.sendPitchBend(midiMod,midiChannel);
         if (pitchGlobal == 0) {                             // just bend the last note played
 
           if (nextWaveform == 1 && waveformNum[0] > 0  )
@@ -85,6 +88,12 @@ void readJoystick() {
     latestRead = analogRead(JoyYPin);
     if (abs(latestRead - yAxis) > 10){
       float yMapped = map(latestRead,1,1024,2.0,0.0);
+      int midiVolume = map(latestRead,1,1024,0,127);
+      Debug("y");
+      Debug(latestRead);
+      Debug("->");
+      Debugln(midiVolume);
+      usbMIDI.sendControlChange(7, midiVolume, midiChannel);
       amp1.gain(yMapped);
    //   usbMIDI.sendControlChange(yAxisController, yAxisPin, channel);
       yAxis = latestRead;

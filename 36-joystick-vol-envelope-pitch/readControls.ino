@@ -1,3 +1,4 @@
+//read control buttons and joysticks
 void readButtons() {
 
   //First send them current

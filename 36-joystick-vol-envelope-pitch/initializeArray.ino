@@ -1,6 +1,11 @@
+// set up the button array
+
+int rSize;
+int cSize;
+
+byte buttonState[10][7];
 void initializeArray() {
 
-    
   rSize = sizeof(rPins)/sizeof(int);
   Debug(rSize);
   Debug(" initializing rows ");

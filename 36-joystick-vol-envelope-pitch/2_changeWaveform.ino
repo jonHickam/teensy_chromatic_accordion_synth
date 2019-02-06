@@ -1,3 +1,22 @@
+// waveform and audio connection mapping
+
+int waveformNum[4] = {0, 1, 2, 3};
+AudioSynthWaveform       waveform[4];
+AudioEffectEnvelope      envelope[4];
+AudioOutputAnalog        dacs1; 
+AudioMixer4              mixer1;
+AudioAmplifier           amp1;    
+AudioConnection          patchCord0(waveform[0], 0, envelope[0], 0);  
+AudioConnection          patchCord1(waveform[1], 0, envelope[1], 0);
+AudioConnection          patchCord2(waveform[2], 0, envelope[2], 0);
+AudioConnection          patchCord3(waveform[3], 0, envelope[3], 0);
+AudioConnection          patchCord4(envelope[0], 0, mixer1, 0);  
+AudioConnection          patchCord5(envelope[1], 0, mixer1, 1);
+AudioConnection          patchCord6(envelope[2], 0, mixer1, 2);
+AudioConnection          patchCord7(envelope[3], 0, mixer1, 3);
+AudioConnection          patchCord8(mixer1, 0, amp1, 0);
+AudioConnection          patchCord9(amp1, 0, dacs1, 0);
+
 
 void changeWaveform() {
         switch (current_waveform) {

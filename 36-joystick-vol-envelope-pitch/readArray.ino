@@ -1,4 +1,4 @@
-
+//read what buttons are being pressed and either start or stop the note
 void readArray() {
   for(int rInt = 0; rInt < rSize; rInt ++) {
    

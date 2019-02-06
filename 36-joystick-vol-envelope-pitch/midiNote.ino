@@ -19,6 +19,6 @@ const int buttonNote[10][7] =
 
 
 int midiNumber(int rInt, int cInt) {
-  int val = buttonNote[rInt][cInt] + 12 * octive;
+  int val = buttonNote[rInt][cInt] + 12 * octave;
   return val;
 }

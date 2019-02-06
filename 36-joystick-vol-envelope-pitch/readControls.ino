@@ -4,19 +4,19 @@ void readButtons() {
   digitalWrite(controlButtonPin,HIGH);
   delay(5);
   // then read the values
-  int OctiveUpVal = digitalRead(octaveUpPin);
-  int OctiveDownVal = digitalRead(octaveDownPin);
+  int OctaveUpVal = digitalRead(octaveUpPin);
+  int OctaveDownVal = digitalRead(octaveDownPin);
   int ButtonA = digitalRead(buttonAPin);
   int ButtonB = digitalRead(buttonBPin);
 
   // change octaves 
-  if (OctiveUpVal == 1 && LastOctiveUpVal== 0 && octive < 6) {
-    octive++;
-    FunDebug("Octive Up");
+  if (OctaveUpVal == 1 && LastOctaveUpVal== 0 && octave < 6) {
+    octave++;
+    FunDebug("Octave Up");
   }
-  if (OctiveDownVal == 1  && LastOctiveDownVal == 0 && octive > 0) {
-    octive--;
-    FunDebug("Octive Down");
+  if (OctaveDownVal == 1  && LastOctaveDownVal == 0 && octave > 0) {
+    octave--;
+    FunDebug("Octave Down");
   }
 
   // change wave types
@@ -36,8 +36,8 @@ void readButtons() {
   } // ButtonB pressed
   
   digitalWrite(controlButtonPin,LOW);  // turn off power to control pins
-  LastOctiveUpVal = OctiveUpVal;
-  LastOctiveDownVal = OctiveDownVal; 
+  LastOctaveUpVal = OctaveUpVal;
+  LastOctaveDownVal = OctaveDownVal; 
   LastButtonA = ButtonA;
   LastButtonB = ButtonB;
 }

@@ -281,7 +281,7 @@ void loop() {
             }
         }
         else if (pitchGlobal == 1) {                      // bend all of the notes
-          for (int x; x< 4; x++){
+          for (int x = 0; x< 4; x++){
             waveform[x].frequency(Frequency[waveformNum[x]]* frequencyMod /1000) ;
           }
         }
